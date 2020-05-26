@@ -1,26 +1,24 @@
 use tonic::{transport::Server, Request, Response, Status};
 
-use hello_world::greeter_server::{Greeter, GreeterServer};
-use hello_world::{HelloReply, HelloRequest};
+use admin_actions::user_manager_server::{UserManager, UserManagerServer};
+use admin_actions::{CreateUserReply, CreateUserRequest};
 
-pub mod hello_world {
-    tonic::include_proto!("helloworld");
+pub mod admin_actions {
+    tonic::include_proto!("admin");
 }
 
 #[derive(Debug, Default)]
-pub struct MyGreeter {}
+pub struct MyUserManager {}
 
 #[tonic::async_trait]
-impl Greeter for MyGreeter {
-    async fn say_hello(
+impl UserManager for MyUserManager {
+    async fn create_user_request(
         &self,
-        request: Request<HelloRequest>,
-    ) -> Result<Response<HelloReply>, Status> {
+        request: Request<CreateUserRequest>,
+    ) -> Result<Response<CreateUserReply>, Status> {
         println!("Got a request: {:?}", request);
 
-        let reply = hello_world::HelloReply {
-            message: format!("Hello {} YoU fUcKinG BitCh!", request.into_inner().name).into(),
-        };
+        let reply = admin_actions::CreateUserReply { rc: 0 };
 
         Ok(Response::new(reply))
     }
@@ -29,11 +27,11 @@ impl Greeter for MyGreeter {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let addr = "192.168.1.42:50051".parse()?;
-    let greeter = MyGreeter::default();
+    let user_manager = MyUserManager::default();
 
     println!("Starting on: {:?}", addr);
     Server::builder()
-        .add_service(GreeterServer::new(greeter))
+        .add_service(UserManagerServer::new(user_manager))
         .serve(addr)
         .await?;
     println!("Starting on: {:?}", addr);
