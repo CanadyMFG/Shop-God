@@ -4,7 +4,7 @@ use admin_actions::user_manager_server::{UserManager, UserManagerServer};
 use admin_actions::{CreateUserReply, CreateUserRequest};
 
 pub mod admin_actions {
-    tonic::include_proto!("admin");
+    tonic::include_proto!("admin_actions");
 }
 
 #[derive(Debug, Default)]
@@ -12,7 +12,7 @@ pub struct MyUserManager {}
 
 #[tonic::async_trait]
 impl UserManager for MyUserManager {
-    async fn create_user_request(
+    async fn create_user(
         &self,
         request: Request<CreateUserRequest>,
     ) -> Result<Response<CreateUserReply>, Status> {
