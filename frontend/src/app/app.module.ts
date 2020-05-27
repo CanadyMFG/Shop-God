@@ -6,12 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { MustMatchDirective } from './_directives/mustmatch.directive';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { AddEntityComponent } from './add-entity/add-entity.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MustMatchDirective,
-    AdduserComponent
+    AdduserComponent,
+    AddCategoryComponent,
+    AddEntityComponent
   ],
   imports: [
     BrowserModule,
