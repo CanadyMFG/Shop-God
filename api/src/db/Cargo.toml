@@ -1,19 +1,9 @@
 [package]
-name = "admin-shop-db"
+name = "db"
 version = "0.1.0"
 authors = ["Joshua Benz <joshua@planethull.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-[dependencies]
-r2d2 = "0.8"
-serde = { version= "1", features = ["derive"] }
-chrono = { version = "0.4", features = ["serde"] }
-uuid = { version = "0.7.4", features = ["serde", "v4"] }
-domain = { package = "admin-shop-domain", path = "../domain" }
-anyhow = "1.0.31"
 
-[dev-dependencies]
-application = { package = "admin-shop-application", path = "../application"}
-fake = "1.2.2"
-log = "*"
+[dependencies]
