@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-entity.component.css']
 })
 export class AddEntityComponent implements OnInit {
-
+  model: any = {};
   constructor() { }
 
   ngOnInit(): void {
