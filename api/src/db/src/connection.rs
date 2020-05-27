@@ -1,5 +1,10 @@
 use mongodb::{options::ClientOptions, Client, Collection}
 
+pub struct ConnOptions {
+    pub db_name: String,
+    pub collection: String
+}
+
 pub struct Repo {
     client: Client,
 }
@@ -15,9 +20,9 @@ impl Repo {
         Repo { client }
     }
 
-    pub fn conn(&self, db_name: &str, collection: &str) -> Collection {
+    pub fn conn(&self, options: ConnOptions) -> Collection {
        self.client
-           .database(db_name)
-           .collection(collection)
+           .database(options.db_name)
+           .collection(options.collection)
     }
 }
