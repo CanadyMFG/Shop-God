@@ -6,19 +6,15 @@
                 <div class="form-row">
                     <div class="form-group col-7">
                         <label>Entity Name</label>
-                        <input type="text" name="firstName" class="form-control" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required>
-                        <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
-                            <div *ngIf="firstName.errors.required">First Name is required</div>
+                        <input type="text" name="name" class="form-control" [(ngModel)]="model.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required>
+                        <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                            <div *ngIf="name.errors.required">Name is required</div>
                         </div>
                     </div>
                     <div class="form-group col-5">
                         <label>Category</label>
                         <select class="form-control" name="category" [(ngModel)]="model.category" #category="ngModel" [ngClass]="{ 'is-invalid': f.submitted && category.invalid }" required>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
+                          <option [ngValue]="1">1</option>
                         </select>
                         <div *ngIf="f.submitted && category.invalid" class="invalid-feedback">
                             <div *ngIf="category.errors.required">Category is required</div>
@@ -33,11 +29,18 @@
                             <div *ngIf="manufacturer.errors.required">Manufacturer is required</div>
                         </div>
                     </div>
-                    <div class="form-group col-4">
+                    <div class="form-group col-2">
                         <label>Manufacturer Number</label>
                         <input type="text" name="manufacturerNum" class="form-control" [(ngModel)]="model.manufacturerNum" #manufacturerNum="ngModel" [ngClass]="{ 'is-invalid': f.submitted && manufacturerNum.invalid }" required>
                         <div *ngIf="f.submitted && manufacturerNum.invalid" class="invalid-feedback">
                             <div *ngIf="manufacturerNum.errors.required">Manufacturer Number is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-2">
+                        <label>Quantity</label>
+                        <input type="text" name="quantity" class="form-control" [(ngModel)]="model.quantity" #quantity="ngModel" [ngClass]="{ 'is-invalid': f.submitted && quantity.invalid }" required>
+                        <div *ngIf="f.submitted && quantity.invalid" class="invalid-feedback">
+                            <div *ngIf="quantity.errors.required">Quantity is required</div>
                         </div>
                     </div>
                     <div class="form-group col-2">

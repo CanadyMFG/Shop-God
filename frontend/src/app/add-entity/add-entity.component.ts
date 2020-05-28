@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Entity } from '../_model/entity.model';
 
 @Component({
   selector: 'app-add-entity',
@@ -10,6 +11,11 @@ export class AddEntityComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+    let entity = new Entity(this.model);
+    alert(JSON.stringify(entity));
   }
 
 }
